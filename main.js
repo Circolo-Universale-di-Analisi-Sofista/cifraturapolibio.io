@@ -1,9 +1,9 @@
 let mat = [
-    ["A", "B", "C", "D", "E"],
-    ["F", "G", "H", "IJ", "K"],
-    ["L", "M", "N", "O", "P"],
-    ["Q", "R", "S", "T", "U"],
-    ["V", "W", "X", "Y", "Z"]
+    ["a", "b", "c", "d", "e"],
+    ["f", "g", "h", "i", "k"],
+    ["l", "m", "n", "o", "p"],
+    ["q", "r", "s", "t", "u"],
+    ["v", "w", "x", "y", "z"]
 ]
 
 function decode(code){
@@ -21,8 +21,8 @@ function encode(code){
         if(num > 8) {
             num -= 1
         }
-        res += (num % 5 + 1) //row
-        res += Math.trunc(num / 5) + 1 //column
+        res += Math.trunc(num / 5) + 1 //row
+        res += num % 5 + 1 //column
     }
     return res
 }
@@ -30,16 +30,25 @@ function encode(code){
 let encoded = document.getElementById("encoded")
 let decoded = document.getElementById("decoded")
 
-encoded.oninput = (e) => {
-    if(!e.currentTarget) {
-        decoded.value = ""
+function onInput(val, fun) {
+    return (e) => {
+        if(!e.currentTarget) {
+            val.value = ""
+        }
+        val.value = fun(e.currentTarget.value)
     }
-    decoded.value = decode(e.currentTarget.value)
 }
 
-decoded.oninput = (e) => {
-    if(!e.currentTarget) {
-        encoded.value = ""
-    }
-    encoded.value = encode(e.currentTarget.value)
+encoded.oninput = onInput(decoded, decode)
+
+decoded.oninput = onInput(encoded, encode)
+
+//test code
+/* function check(code, eq=code){
+    return decode(encode(code)) == eq
 }
+
+if(    !check("abcdefghiklmnopqrstuvwxyz")
+    || !check("j", "i") ){
+    console.log("the algorithm is incorrect")
+} */
