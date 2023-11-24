@@ -4,16 +4,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Server</title>
+    <title>Polybius square</title>
     <script src="main.js" defer></script>
+    <style>
+      * {
+        background-color: rgb(35, 37, 41);
+        color: rgb(248, 249, 250);
+        font-family: system-ui;
+        font-size: 1.2rem;
+        border: none;
+        outline: none;
+      }
+
+      input {
+        background-color: rgb(73, 80, 87);
+      }
+    </style>
   </head>
 
-  <body>
-    <h1>Cifratura di Polibio</h1>
-    <label>encoded: <input id="encoded" typ="text"></label>
-    <br>
-    <br>
-    <label>decoded: <input id="decoded" type="text" style="text-transform:uppercase"></label>
+  <body style="display: flex; justify-content: center">
+    <div>
+      <h1>Polybius square</h1>
+      <label>encoded: <input id="encoded" typ="text" /></label>
+      <br />
+      <br />
+      <label>decoded: <input id="decoded" type="text" /></label>
+    </div>
   </body>
-
 </html>
